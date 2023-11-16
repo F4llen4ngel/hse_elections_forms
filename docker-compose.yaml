@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: hiring_form
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn --host 0.0.0.0 --port 8000 app:app
+    ports:
+      - 8000:8000

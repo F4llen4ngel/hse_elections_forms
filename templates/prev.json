@@ -1,0 +1,771 @@
+{
+    "locale": "ru",
+    "title": {
+        "default": "Apply to HSE Digital Committee",
+        "ru": "Подача заявки в Комитет по Цифровизации"
+    },
+    "logoPosition": "right",
+    "completedHtml": {
+        "ru": "<h3>Спасибо за заявку!</h3>\nВ ближайшее время мы обязательно напишем тебе."
+    },
+    "loadingHtml": {
+        "ru": "<h3>Загрузка...</h3>"
+    },
+    "pages": [
+        {
+            "name": "info_page",
+            "elements": [
+                {
+                    "type": "text",
+                    "name": "Имя",
+                    "title": {
+                        "ru": "Как тебя зовут?"
+                    },
+                    "isRequired": true,
+                    "autocomplete": "name",
+                    "placeholder": {
+                        "ru": "Ваня Иванов"
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "ОП",
+                    "title": {
+                        "ru": "На какой программе ты учишься?"
+                    },
+                    "description": {
+                        "ru": "Пожалуйста, укажи полное название"
+                    },
+                    "isRequired": true,
+                    "validators": [
+                        {
+                            "type": "text",
+                            "text": {
+                                "ru": "Пожалуйста, введите полное название учебной программы"
+                            },
+                            "minLength": 6
+                        }
+                    ],
+                    "autocomplete": "name",
+                    "placeholder": {
+                        "ru": "Информатика и вычислительная техника"
+                    }
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "Курс",
+                    "title": {
+                        "ru": "На каком курсе ты учишься?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        {
+                            "value": 5,
+                            "text": {
+                                "ru": "Я уже смешарик (магистратура)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "multipletext",
+                    "name": "chat",
+                    "title": {
+                        "ru": "Как в тобой связаться?"
+                    },
+                    "description": {
+                        "ru": "Укажи хотя бы одну социальную сеть."
+                    },
+                    "isRequired": true,
+                    "validators": [
+                        {
+                            "type": "expression",
+                            "expression": "{chat.tg} notempty or {chat.vk} notempty"
+                        }
+                    ],
+                    "items": [
+                        {
+                            "name": "vk",
+                            "placeholder": {
+                                "ru": "@me"
+                            },
+                            "title": {
+                                "ru": "ВКонтакте"
+                            },
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "text": {
+                                        "ru": "Укажи ник в формате «@nick»."
+                                    },
+                                    "regex": "@.+"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "tg",
+                            "placeholder": {
+                                "ru": "@also_me"
+                            },
+                            "title": {
+                                "ru": "Telegram"
+                            },
+                            "validators": [
+                                {
+                                    "type": "regex",
+                                    "text": {
+                                        "ru": "Укажи ник в формате «@nick»."
+                                    },
+                                    "regex": "@.+"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "name": "email",
+                    "title": {
+                        "ru": "Укажи корпоративный e-mail"
+                    },
+                    "description": {
+                        "ru": "Чтобы в будущем мы могли быстро выдать доступ к внутренним инструментам и сервисам."
+                    },
+                    "isRequired": true,
+                    "validators": [
+                        {
+                            "type": "email"
+                        },
+                        {
+                            "type": "expression",
+                            "text": {
+                                "ru": "Укажи адрес в домене @edu.hse.ru."
+                            },
+                            "expression": "{email} contains '@edu.hse.ru'"
+                        }
+                    ],
+                    "inputType": "email",
+                    "autocomplete": "email",
+                    "placeholder": {
+                        "ru": "me@edu.hse.ru"
+                    }
+                }
+            ],
+            "title": {
+                "ru": "О себе"
+            }
+        },
+        {
+            "name": "departments_page",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "Интересы в КпЦ",
+                    "title": {
+                        "ru": "Выбери интересующие направления работы"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "SMM",
+                            "text": {
+                                "ru": "SMM — продвижение комитета в соцсетях и внутриуниверситетских медиа"
+                            }
+                        },
+                        {
+                            "value": "Разработка",
+                            "text": {
+                                "ru": "Разработка — оптимизация работы студсовета при помощи собственных сервисов (телеграм-боты, сайты) "
+                            }
+                        },
+                        {
+                            "value": "Тестирование",
+                            "text": {
+                                "ru": "Тестирование — у вышки есть множество сервисов, которые нуждаются в хорошем пользовательском ревью для дальнейшей доработки"
+                            }
+                        },
+                        {
+                            "value": "Безопасность",
+                            "text": {
+                                "ru": "Безопасность — похоже на тестирование, но здесь аудит проводится по части кибербезопасности"
+                            }
+                        },
+                        {
+                            "value": "Аналитика",
+                            "text": {
+                                "ru": "Аналитика — студсовету и администрации важно видеть статистику использования разрабатываемых продуктов"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "title": {
+                "ru": "Сферы интересов"
+            },
+            "description": {
+                "ru": "Комитет занимается различными задачами, связанными с IT. Нам нужны люди с совершенно разными навыками: от SMM до разработки ботов и пентестинга. Указанное ниже разделение — не строгое. В дальнейшем ты сможешь выбирать любые понравившиеся проекты, а пока что мы просто хотим узнать про наибольшее число твоих сильных сторон."
+            }
+        },
+        {
+            "name": "smm_page",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "[SMM] Опыт ведения пабликов",
+                    "title": {
+                        "ru": "Есть ли у тебя опыт ведения пабликов или других медиа?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "Нет",
+                            "text": {
+                                "ru": "Нет"
+                            }
+                        }
+                    ],
+                    "showOtherItem": true,
+                    "otherPlaceholder": {
+                        "ru": "У меня есть любимый пёс шарик, и я завела для него страничку в нельзяграме. Вот она: @pes"
+                    },
+                    "otherText": {
+                        "ru": "Да, например..."
+                    },
+                    "otherErrorText": {
+                        "ru": "Пожалуйста, опишите свой опыт"
+                    }
+                },
+                {
+                    "type": "boolean",
+                    "name": "[SMM] Опыт разработки",
+                    "title": {
+                        "ru": "Есть ли опыт разработки?"
+                    },
+                    "description": {
+                        "ru": "Любой язык, технология, сервис."
+                    },
+                    "isRequired": true
+                },
+                {
+                    "type": "paneldynamic",
+                    "name": "[SMM] Владение фото/видеоредакторами",
+                    "title": {
+                        "ru": "Владеешь фото/видеоредакторами?"
+                    },
+                    "templateElements": [
+                        {
+                            "type": "text",
+                            "name": "Название",
+                            "title": {
+                                "ru": "Название редактора"
+                            },
+                            "isRequired": true,
+                            "placeholder": {
+                                "ru": "Канва"
+                            }
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Уровень",
+                            "title": {
+                                "ru": "Уровень владения"
+                            },
+                            "description": {
+                                "ru": "От «просто видел(а)» до «могу делать работу на заказ»."
+                            },
+                            "isRequired": true,
+                            "rateValues": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5
+                            ]
+                        }
+                    ],
+                    "noEntriesText": {
+                        "ru": "Нажми на кнопку ниже, чтобы добавить новый редактор.\nЕсли не знаешь ни одного — просто пропусти этот вопрос."
+                    },
+                    "panelAddText": {
+                        "ru": "Добавить новый"
+                    }
+                },
+                {
+                    "type": "comment",
+                    "name": "[SMM] Тестовое",
+                    "title": {
+                        "ru": "Небольшое тестовое задание"
+                    },
+                    "description": {
+                        "ru": "Посмотри группу КпЦ во ВКонтакте (vk.com/hse_digital) и предложи идеи по её улучшению. Это задание можно пропустить."
+                    },
+                    "placeholder": {
+                        "ru": "ВКонтакте мёртв, нужно переехать в Одноклассники!"
+                    },
+                    "autoGrow": true
+                }
+            ],
+            "visibleIf": "{Интересы в КпЦ} contains 'SMM'",
+            "title": {
+                "ru": "Коммуникации"
+            }
+        },
+        {
+            "name": "it_page",
+            "elements": [
+                {
+                    "type": "panel",
+                    "name": "[IT] Опыт",
+                    "elements": [
+                        {
+                            "type": "rating",
+                            "name": "Python",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Jupyter Notebook",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Pandas & NumPy & Matplotlib",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "PythonTelegramBot / Telethon",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "HTML & CSS & JS",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Docker",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Git (GitHub)",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Natural Language Processing / Machine Learning",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "comment",
+                            "name": "NLP/ML знания",
+                            "visible": false,
+                            "visibleIf": "{Natural Language Processing / Machine Learning} notempty and {Natural Language Processing / Machine Learning} <> 0",
+                            "title": {
+                                "ru": "Расскажи, что именно ты знаешь про NLP или ML"
+                            },
+                            "isRequired": true,
+                            "autoGrow": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "REST API",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "HTTP",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Прокси (mitmproxy, charles)",
+                            "isRequired": true,
+                            "rateValues": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ],
+                            "rateMin": 0,
+                            "minRateDescription": {
+                                "ru": "Не знаю"
+                            },
+                            "maxRateDescription": {
+                                "ru": "Отлично знаю"
+                            },
+                            "displayRateDescriptionsAsExtremeItems": true
+                        }
+                    ],
+                    "title": {
+                        "ru": "Для работы в проектах КпЦ полезно уметь пользоваться некоторыми технологиями."
+                    },
+                    "description": {
+                        "ru": "Оцени своё знание этих технологий от «не слышал(а) о таком» до «могу делать работу на заказ с применением этого инструмента»."
+                    }
+                },
+                {
+                    "type": "paneldynamic",
+                    "name": "Другие технологии",
+                    "title": {
+                        "ru": "Какими ещё технологиями владеешь?"
+                    },
+                    "description": {
+                        "ru": "Это могут быть языки программирования, фреймворки, программы — всё, что посчитаешь нужным."
+                    },
+                    "templateElements": [
+                        {
+                            "type": "text",
+                            "name": "Название",
+                            "title": {
+                                "ru": "Название языка/фреймворка/программы"
+                            },
+                            "isRequired": true,
+                            "placeholder": {
+                                "ru": "Java"
+                            }
+                        },
+                        {
+                            "type": "rating",
+                            "name": "Уровень",
+                            "title": {
+                                "ru": "Уровень владения"
+                            },
+                            "description": {
+                                "ru": "От «просто видел(а)» до «могу делать работу на заказ»."
+                            },
+                            "isRequired": true,
+                            "rateValues": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5
+                            ]
+                        }
+                    ],
+                    "noEntriesText": {
+                        "ru": "Нажми на кнопку ниже, чтобы добавить новую технологию.\nЕсли добавить нечего — просто пропусти этот вопрос."
+                    },
+                    "panelAddText": {
+                        "ru": "Добавить новую"
+                    }
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "Реализованные проекты",
+                    "title": {
+                        "ru": "Есть ли у тебя реализованные проекты в сфере IT?"
+                    },
+                    "description": {
+                        "ru": "Это может быть бот для соцсети, аналитика на питоне — что угодно."
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "Нет",
+                            "text": {
+                                "ru": "Нет"
+                            }
+                        }
+                    ],
+                    "showOtherItem": true,
+                    "otherPlaceholder": {
+                        "ru": "Однажды я взломала сайт школы и учитель информатики поставил мне двойку :("
+                    },
+                    "otherText": {
+                        "ru": "Да, вот они..."
+                    },
+                    "otherErrorText": {
+                        "ru": "Пожалуйста, опишите свой опыт"
+                    }
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "Участие в олимпиадах",
+                    "title": {
+                        "ru": "Ты участвовал(а) в соревнованиях по программированию или в CTF?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "Нет",
+                            "text": {
+                                "ru": "Нет"
+                            }
+                        }
+                    ],
+                    "showOtherItem": true,
+                    "otherPlaceholder": {
+                        "ru": "В 10 классе мы с командой завоевали второе место на хакатоне: разрабатывали интернет-магазин на Django."
+                    },
+                    "otherText": {
+                        "ru": "Да, сейчас расскажу..."
+                    },
+                    "otherErrorText": {
+                        "ru": "Пожалуйста, опишите свой опыт"
+                    }
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "Английский",
+                    "title": {
+                        "ru": "Знаешь английский язык?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "Нет",
+                            "text": {
+                                "ru": "Я котьик"
+                            }
+                        },
+                        {
+                            "value": "A1-A2",
+                            "text": {
+                                "ru": "A1 - A2"
+                            }
+                        },
+                        {
+                            "value": "B1-B2",
+                            "text": {
+                                "ru": "В1 - В2"
+                            }
+                        },
+                        {
+                            "value": "C1+",
+                            "text": {
+                                "ru": "С1 и выше"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "Хочу в проект",
+                    "visibleIf": "{Курс} anyof [2, 3] and {Курс} notempty",
+                    "title": {
+                        "ru": "Для второкурсников и третьекурсников из МИЭМа у нас есть особое предложение: проект, в котором начисляют часы за работу в комитете. Хотелось бы вступить?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "Да",
+                            "text": {
+                                "ru": "Да"
+                            }
+                        },
+                        {
+                            "value": "Нет",
+                            "text": {
+                                "ru": "Нет"
+                            }
+                        }
+                    ],
+                    "showNoneItem": true,
+                    "noneText": {
+                        "ru": "Я не из МИЭМа"
+                    }
+                },
+                {
+                    "type": "text",
+                    "name": "GitHub",
+                    "title": {
+                        "ru": "Если хочешь — дай нам ссылку на свой гит"
+                    },
+                    "inputType": "url",
+                    "placeholder": {
+                        "ru": "github.com/myself"
+                    }
+                }
+            ],
+            "visibleIf": "{Интересы в КпЦ} anyof ['Аналитика', 'Безопасность', 'Тестирование', 'Разработка']",
+            "title": {
+                "ru": "АйТи"
+            },
+            "description": {
+                "ru": "Некоторые вопросы в этом разделе могут отпугнуть тебя. Не бойся указывать, что не знаешь ту или иную технологию — это не проблема, мы просто хотим лучше узнать, что именно ты умеешь."
+            }
+        }
+    ],
+    "sendResultOnPageNext": true,
+    "questionErrorLocation": "bottom",
+    "progressBarType": "questions",
+    "textUpdateMode": "onTyping",
+    "autoGrowComment": true,
+    "completeText": {
+        "ru": "Отправить анкету"
+    },
+    "editText": {
+        "ru": "Изменить ответ"
+    },
+    "questionTitlePattern": "numRequireTitle",
+    "widthMode": "static"
+}

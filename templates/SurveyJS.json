@@ -1,0 +1,124 @@
+{
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "position",
+          "title": "Выбираем куда баллотируемся",
+          "isRequired": true,
+          "choices": [
+            "ЛСС+ совет аспирантов",
+            "Общаги",
+            "СОИС",
+            "УПС",
+            "Студорганизация"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page2",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "personal_info",
+          "title": "Основная информация",
+          "elements": [
+            { "type": "text", "name": "full_name", "title": "ФИО", "isRequired": true },
+            { "type": "text", "name": "birth_date", "title": "Дата рождения", "inputType": "date", "isRequired": true },
+            {
+              "type": "text",
+              "name": "corporate_email",
+              "title": "Адрес корпоративной электронной почты",
+              "isRequired": true,
+              "validators": [
+                {
+                  "type": "email"
+                },
+                {
+                  "type": "expression",
+                  "text": "Укажи адрес в домене @edu.hse.ru.",
+                  "expression": "{corporate_email} contains '@edu.hse.ru'"
+                }
+              ]
+            },
+            { "type": "text", "name": "education_level", "title": "Ступень образования", "isRequired": true },
+            { "type": "text", "name": "op", "title": "ОП", "isRequired": true },
+            { "type": "text", "name": "course", "title": "Курс", "isRequired": true },
+            { "type": "text", "name": "faculty", "title": "Факультет", "isRequired": true },
+            { "type": "text", "name": "vk_profile", "title": "Ссылка на профиль в вк", "isRequired": true, "validators": [{ "type": "url" }] },
+            { "type": "text", "name": "phone_number", "title": "Номер телефона", "isRequired": true, "inputType": "tel" },
+            { "type": "boolean", "name": "data_processing_consent", "title": "Согласие об обработке персданных", "isRequired": true }
+          ]
+        },
+        {
+          "type": "panel",
+          "name": "lss_sois_dorms",
+          "visibleIf": "{position} = 'ЛСС+ совет аспирантов' or {position} = 'СОИС' or {position} = 'Общаги'",
+          "elements": [
+            { "type": "comment", "name": "appeal_russian", "title": "Обращение на русском", "isRequired": true },
+            { "type": "comment", "name": "appeal_english", "title": "Обращение на английском", "isRequired": true },
+            { "type": "file", "name": "photo", "title": "Фото", "isRequired": true, "storeDataAsText": false, "showPreview": true, "maxSize": 1024000 },
+            { "type": "file", "name": "election_program", "title": "Предвыборная программа", "isRequired": true, "storeDataAsText": false, "showPreview": false, "acceptedTypes": ["application/pdf"], "maxSize": 1024000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page3",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "ups",
+          "visibleIf": "{position} = 'УПС'",
+          "elements": [
+            { "type": "comment", "name": "ups_appeal_russian", "title": "Обращение на русском", "isRequired": true },
+            { "type": "comment", "name": "ups_appeal_english", "title": "Обращение на английском", "isRequired": true },
+            { "type": "file", "name": "ups_photo", "title": "Фото", "isRequired": true, "storeDataAsText": false, "showPreview": true, "maxSize": 1024000 },
+            { "type": "file", "name": "ups_election_program", "title": "Предвыборная программа", "isRequired": true, "storeDataAsText": false, "showPreview": false, "acceptedTypes": ["application/pdf"], "maxSize": 1024000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "page4",
+      "elements": [
+        {
+          "type": "panel",
+          "name": "vice_info",
+          "title": "Информация о вице-президенте",
+          "visibleIf": "{position} = 'УПС'",
+          "elements": [
+            { "type": "text", "name": "vice_full_name", "title": "ФИО вице-президента", "isRequired": true },
+            { "type": "text", "name": "vice_birth_date", "title": "Дата рождения вице-президента", "inputType": "date", "isRequired": true },
+            {
+              "type": "text",
+              "name": "vice_corporate_email",
+              "title": "Адрес корпоративной электронной почты вице-президента",
+              "isRequired": true,
+              "validators": [
+                {
+                  "type": "email"
+                },
+                {
+                  "type": "expression",
+                  "text": "Укажи адрес в домене @edu.hse.ru.",
+                  "expression": "{vice_corporate_email} contains '@edu.hse.ru'"
+                }
+              ]
+            },            
+            { "type": "text", "name": "vice_education_level", "title": "Ступень образования вице-президента", "isRequired": true },
+            { "type": "text", "name": "vice_op", "title": "ОП вице-президента", "isRequired": true },
+            { "type": "text", "name": "vice_course", "title": "Курс вице-президента", "isRequired": true },
+            { "type": "text", "name": "vice_faculty", "title": "Факультет вице-президента", "isRequired": true },
+            { "type": "text", "name": "vice_vk_profile", "title": "Ссылка на профиль в вк вице-президента", "isRequired": true, "validators": [{ "type": "url" }] },
+            { "type": "text", "name": "vice_phone_number", "title": "Номер телефона вице-президента", "isRequired": true, "inputType": "tel" },
+            { "type": "boolean", "name": "vice_data_processing_consent", "title": "Согласие об обработке персданных вице-президента", "isRequired": true }
+          ]
+        }
+      ]
+    }
+  ]
+}

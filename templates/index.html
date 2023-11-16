@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{form_title}}</title>
+    <script src="https://unpkg.com/jquery@3.6.1"></script>
+    <link href="https://unpkg.com/survey-jquery@1.9.58/defaultV2.css" type="text/css" rel="stylesheet" />
+    <script src="https://unpkg.com/survey-jquery@1.9.58/survey.jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="surveyContainer"></div>
+</body>
+
+<script>
+    Survey.StylesManager.applyTheme("defaultV2");
+
+    var surveyJSON = {{surveyJSON | safe}};
+</script>
+
+<script>
+    function sendDataToServer(survey) {
+        $.ajax({
+            url: this.url,
+            type: 'POST',
+            data: JSON.stringify(survey.data),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                console.log("success");
+            },
+            error: function (data) {
+                console.log("error");
+            }
+        });
+    }
+
+    var survey = new Survey.Model(surveyJSON);
+
+    survey.onValueChanged.add(function(survey, options){
+            if (options.name === 'language') {
+                survey.locale = options.value;
+                survey.render();
+            }
+        });
+
+    $("#surveyContainer").Survey({
+        model: survey,
+        onComplete: sendDataToServer
+    });
+</script>
+
+</html>

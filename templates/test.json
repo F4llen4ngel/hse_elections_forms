@@ -1,0 +1,334 @@
+{
+    "locale": "ru",
+    "title": {
+      "default": "Election Survey",
+      "ru": "Анкета для выборов"
+    },
+    "pages": [
+      {
+        "elements": [
+          {
+            "type": "radiogroup",
+            "name": "language",
+            "title": {
+              "default": "Select your language / Выберите ваш язык",
+              "ru": "Выберите ваш язык / Select your language"
+            },
+            "choices": [
+              { "value": "en", "text": "English" },
+              { "value": "ru", "text": "Русский" }
+            ],
+            "defaultValue": "ru"
+          },
+          {
+            "type": "radiogroup",
+            "name": "campus",
+            "title": {
+              "default": "Choose your campus",
+              "ru": "Выберите ваш кампус"
+            },
+            "choices": [
+              { "value": "moscow", "text": { "default": "Moscow", "ru": "Москва" } },
+              { "value": "nizhny_novgorod", "text": { "default": "Nizhny Novgorod", "ru": "Нижний Новгород" } },
+              { "value": "perm", "text": { "default": "Perm", "ru": "Пермь" } }
+            ],
+            "isRequired": true
+          },
+          {
+            "type": "checkbox",
+            "name": "moscow_nomination",
+            "visibleIf": "{campus} = 'moscow'",
+            "title": {
+              "default": "Choose where you are nominating (Multiple choices)",
+              "ru": "Выберите, куда вы баллотируетесь (Несколько вариантов)"
+            },
+            "choices": [
+              { "value": "lss", "text": { "default": "LSS + Graduate Council", "ru": "ЛСС + совет аспирантов" } },
+              { "value": "dorms", "text": { "default": "Dormitories", "ru": "Общаги" } },
+              { "value": "sois", "text": { "default": "SOIS", "ru": "СОИС" } },
+              { "value": "ups", "text": { "default": "UPS", "ru": "УПС" } }
+            ],
+            "isRequired": true
+          },
+          {
+            "type": "checkbox",
+            "name": "non_moscow_nomination",
+            "visibleIf": "{campus} != 'moscow'",
+            "title": {
+              "default": "Choose where you are nominating (Multiple choices)",
+              "ru": "Выберите, куда вы баллотируетесь (Несколько вариантов)"
+            },
+            "choices": [
+              { "value": "faculty", "text": { "default": "Faculty", "ru": "Факультет" } },
+              { "value": "dormitory", "text": { "default": "Dormitory", "ru": "Общежитие" } },
+              { "value": "student_org", "text": { "default": "Student Organization", "ru": "Студорганизация" } }
+            ],
+            "isRequired": true
+          },
+          {
+            "type": "panel",
+            "name": "basic_information",
+            "elements": [
+              { "type": "text", "name": "full_name", "title": { "default": "Full Name", "ru": "ФИО" }, "isRequired": true },
+              { "type": "text", "name": "birth_date", "title": { "default": "Date of Birth", "ru": "Дата рождения" }, "inputType": "date", "isRequired": true },
+              { "type": "text", "name": "corporate_email", "title": { "default": "Corporate Email Address", "ru": "Адрес корпоративной электронной почты" }, "validators": [{ "type": "email" },
+              {
+                "type": "expression",
+                "text": {
+                    "ru": "Укажи адрес в домене @edu.hse.ru."
+                },
+                "expression": "{corporate_email} contains '@edu.hse.ru'"
+              }],
+              "isRequired": true },
+              {
+                "type": "dropdown",
+                "name": "education_level",
+                "title": {
+                  "default": "Education Level",
+                  "ru": "Ступень образования"
+                },
+                "choices": [
+                  { "value": "bachelor", "text": { "default": "Bachelor", "ru": "Бакалавр" } },
+                  { "value": "master", "text": { "default": "Master", "ru": "Магистр" } },
+                  { "value": "phd", "text": { "default": "PhD", "ru": "Аспирант" } }
+                ],
+                "isRequired": true
+              },
+              {
+                "type": "dropdown",
+                "name": "faculty",
+                "title": {
+                  "default": "Faculty",
+                  "ru": "Факультет"
+                },
+                "isRequired": true,
+                "choices": [
+                  "Базовая кафедра музея современного искусства \"Гараж\"",
+                  "Банковский институт",
+                  "Высшая школа бизнеса",
+                  "Высшая школа юриспруденции и администрирования",
+                  "Институт демографии им. Вышневского",
+                  "Институт когнитивных нейронаук",
+                  "Институт образования",
+                  "Институт проблем безопасности",
+                  "Институт статистических исследований и экономики знаний",
+                  "Институт торговой политики",
+                  "Московский институт электроники и математики им. А. Н. Тихонова",
+                  "Факультет биологии и биотехнологии",
+                  "Факультет географии и геоинформационных технологий",
+                  "Факультет городского и регионального развития",
+                  "Факультет гуманитарных наук",
+                  "Факультет креативных индустрий",
+                  "Факультет компьютерных наук",
+                  "Факультет математики",
+                  "Факультет мировой экономики и мировой политики",
+                  "Факультет права",
+                  "Факультет социальных наук",
+                  "Факультет физики",
+                  "Факультет химии",
+                  "Факультет экономических наук",
+                  "Школа инноватики и предпринимательства",
+                  "Школа иностранных языков"
+                ]
+              },
+              { "type": "text", "name": "op", "title": { "default": "Educational Program", "ru": "Образовательная программа" }, "isRequired": true },
+              { "type": "text", "name": "course", "title": { "default": "Course", "ru": "Курс" }, "isRequired": true },
+              { "type": "boolean", "name": "dormitory_residence", "title": { "default": "Dormitory / Alternative Residence", "ru": "Общежитие / Место альтернативного расселения" }, "isRequired": true },
+              {
+                "type": "dropdown",
+                "name": "dormitory_choice",
+                "visibleIf": "{campus} = 'moscow' and {dormitory_residence} = true",
+                "title": {
+                  "default": "Choose a Dormitory",
+                  "ru": "Выберите общежитие"
+                },
+                "isRequired": true,
+                "choices": [
+                  "Общежитие №1",
+                  "Общежитие №2",
+                  "Общежитие №3",
+                  "Общежитие №4",
+                  "Общежитие №5",
+                  "Общежитие №6",
+                  "Общежитие №7",
+                  "Общежитие №8 \"Трилистник\"",
+                  "Общежитие №9",
+                  "Общежитие №10",
+                  "Студенческий городок \"Дубки\"",
+                  "Гостиница \"Севастополь\"",
+                  "ЖК \"Level Амурская\"",
+                  "Центр размещения студентов",
+                  "Общежитие \"Дом аспиранта\""
+                ]
+              },
+              { "type": "text", "name": "vk_profile", "title": { "default": "VK Profile Link", "ru": "Ссылка на профиль в ВК" }, "isRequired": true },
+              { "type": "text", "name": "phone_number", "title": { "default": "Phone Number", "ru": "Номер телефона" }, "isRequired": true, "inputType": "tel" },
+              { "type": "boolean", "name": "data_processing_consent", "title": { "default": "Consent for personal data processing", "ru": "Согласие на обработку персональных данных" }, "isRequired": true }
+            ],
+            "title": {
+              "default": "Basic Information",
+              "ru": "Основная информация"
+            }
+          }
+        ]
+      },
+      {
+        "name": "section2_moscow",
+        "elements": [
+          {
+            "type": "panel",
+            "name": "faculty_sois_dorms",
+            "visibleIf": "{campus} = 'moscow' and ({moscow_nomination} contains 'lss' or {moscow_nomination} contains 'sois' or {moscow_nomination} contains 'dorms')",
+            "title": {
+              "default": "Candidate application form",
+              "ru": "Анкета кандидата"
+            },
+            "elements": [
+              { "type": "comment", "name": "appeal_russian", "title": { "default": "Appeal in Russian *", "ru": "Обращение на русском *" }, "isRequired": true },
+              { "type": "comment", "name": "appeal_english", "title": { "default": "Appeal in English *", "ru": "Обращение на английском *" }, "isRequired": true },
+              { "type": "file", "name": "photo", "title": { "default": "Photo", "ru": "Фото" }, "isRequired": false },
+              { "type": "file", "name": "election_program", "title": { "default": "Election Program *", "ru": "Предвыборная программа *" }, "isRequired": true, "acceptedTypes": ["application/pdf"] }
+            ]
+          },
+          {
+            "type": "panel",
+            "name": "ups",
+            "visibleIf": "{campus} = 'moscow' and {moscow_nomination} contains 'ups'",
+            "title": {
+              "default": "UPS Nomination",
+              "ru": "Номинация УПС"
+            },
+            "elements": [
+            ]
+          }
+        ]
+      },
+      {
+        "elements": [
+          {
+            "type": "panel",
+            "name": "vice_basic_information",
+            "elements": [
+              { "type": "text", "name": "vice_full_name", "title": { "default": "Full Name", "ru": "ФИО" }, "isRequired": true },
+              { "type": "text", "name": "vice_birth_date", "title": { "default": "Date of Birth", "ru": "Дата рождения" }, "inputType": "date", "isRequired": true },
+              { "type": "text", "name": "vice_corporate_email", "title": { "default": "Corporate Email Address", "ru": "Адрес корпоративной электронной почты" }, "validators": [{ "type": "email" },
+              {
+                "type": "expression",
+                "text": {
+                    "ru": "Укажи адрес в домене @edu.hse.ru."
+                },
+                "expression": "{vice_corporate_email} contains '@edu.hse.ru'"
+              }],
+              "isRequired": true },
+              {
+                "type": "dropdown",
+                "name": "vice_education_level",
+                "title": {
+                  "default": "Education Level",
+                  "ru": "Ступень образования"
+                },
+                "choices": [
+                  { "value": "bachelor", "text": { "default": "Bachelor", "ru": "Бакалавр" } },
+                  { "value": "master", "text": { "default": "Master", "ru": "Магистр" } },
+                  { "value": "phd", "text": { "default": "PhD", "ru": "Аспирант" } }
+                ],
+                "isRequired": true
+              },
+              {
+                "type": "dropdown",
+                "name": "vice_faculty",
+                "title": {
+                  "default": "Faculty",
+                  "ru": "Факультет"
+                },
+                "isRequired": true,
+                "choices": [
+                  "Базовая кафедра музея современного искусства \"Гараж\"",
+                  "Банковский институт",
+                  "Высшая школа бизнеса",
+                  "Высшая школа юриспруденции и администрирования",
+                  "Институт демографии им. Вышневского",
+                  "Институт когнитивных нейронаук",
+                  "Институт образования",
+                  "Институт проблем безопасности",
+                  "Институт статистических исследований и экономики знаний",
+                  "Институт торговой политики",
+                  "Московский институт электроники и математики им. А. Н. Тихонова",
+                  "Факультет биологии и биотехнологии",
+                  "Факультет географии и геоинформационных технологий",
+                  "Факультет городского и регионального развития",
+                  "Факультет гуманитарных наук",
+                  "Факультет креативных индустрий",
+                  "Факультет компьютерных наук",
+                  "Факультет математики",
+                  "Факультет мировой экономики и мировой политики",
+                  "Факультет права",
+                  "Факультет социальных наук",
+                  "Факультет физики",
+                  "Факультет химии",
+                  "Факультет экономических наук",
+                  "Школа инноватики и предпринимательства",
+                  "Школа иностранных языков"
+                ]
+              },
+              { "type": "text", "name": "vice_op", "title": { "default": "Educational Program", "ru": "Образовательная программа" }, "isRequired": true },
+              { "type": "text", "name": "vice_course", "title": { "default": "Course", "ru": "Курс" }, "isRequired": true },
+              { "type": "boolean", "name": "vice_dormitory_residence", "title": { "default": "Dormitory / Alternative Residence", "ru": "Общежитие / Место альтернативного расселения" }, "isRequired": true },
+              {
+                "type": "dropdown",
+                "name": "vice_dormitory_choice",
+                "visibleIf": "{campus} = 'moscow' and {dormitory_residence} = true",
+                "title": {
+                  "default": "Choose a Dormitory",
+                  "ru": "Выберите общежитие"
+                },
+                "isRequired": true,
+                "choices": [
+                  "Общежитие №1",
+                  "Общежитие №2",
+                  "Общежитие №3",
+                  "Общежитие №4",
+                  "Общежитие №5",
+                  "Общежитие №6",
+                  "Общежитие №7",
+                  "Общежитие №8 \"Трилистник\"",
+                  "Общежитие №9",
+                  "Общежитие №10",
+                  "Студенческий городок \"Дубки\"",
+                  "Гостиница \"Севастополь\"",
+                  "ЖК \"Level Амурская\"",
+                  "Центр размещения студентов",
+                  "Общежитие \"Дом аспиранта\""
+                ]
+              },
+              { "type": "text", "name": "vice_vk_profile", "title": { "default": "VK Profile Link", "ru": "Ссылка на профиль в ВК" }, "isRequired": true },
+              { "type": "text", "name": "vice_phone_number", "title": { "default": "Phone Number", "ru": "Номер телефона" }, "isRequired": true, "inputType": "tel" },
+              { "type": "boolean", "name": "vice_data_processing_consent", "title": { "default": "Consent for personal data processing", "ru": "Согласие на обработку персональных данных" }, "isRequired": true }
+            ],
+            "title": {
+              "default": "Vice-President Information",
+              "ru": "Информация вице-президента"
+            },
+            "visibleIf":"{campus} = 'moscow' and ({moscow_nomination} contains 'ups'"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "type": "setvalue",
+        "operator": "equal",
+        "value": "en",
+        "setToName": "locale",
+        "setName": "language"
+      },
+      {
+        "type": "setvalue",
+        "operator": "equal",
+        "value": "ru",
+        "setToName": "locale",
+        "setName": "language"
+      }
+    ]
+  }
+  
